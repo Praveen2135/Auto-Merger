@@ -54,4 +54,8 @@ def Auto_mearg (df1,df2):
     st.table(previous_DF)
 
 
-Auto_mearg(current_DF,previous_DF)
+st.button('merge',on_click=Auto_mearg(current_DF,previous_DF))
+
+
+#if previous_DF == True:
+   # Auto_mearg(current_DF,previous_DF)
