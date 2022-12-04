@@ -57,9 +57,9 @@ def Auto_mearg (df1,df2):
 
 
 
-m_status = st.button('merge')
-if m_status:
-    Auto_mearg(current_DF,previous_DF)
+m_status = st.button('merge',on_click=Auto_mearg(current_DF,previous_DF))
+#if m_status:
+    
 
 #if previous_DF == True:
    # Auto_mearg(current_DF,previous_DF)
