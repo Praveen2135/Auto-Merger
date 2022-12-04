@@ -9,6 +9,8 @@ previous=st.file_uploader('Upload Previous Quater file')
 current_DF=pd.read_excel(current)
 previous_DF=pd.read_excel(previous)
 
+
+
 if True in (previous_DF['previous'].duplicated().tolist()):
     duplicate=(previous_DF[previous_DF['previous'].duplicated()])['previous'].tolist()
     duplicate_particulars = (previous_DF[previous_DF['previous'] == duplicate[0]])['Unnamed: 0'].tolist()
@@ -54,8 +56,10 @@ def Auto_mearg (df1,df2):
     st.table(previous_DF)
 
 
-st.button('merge',on_click=Auto_mearg(current_DF,previous_DF))
 
+m_status = st.button('merge')
+if m_status:
+    Auto_mearg(current_DF,previous_DF)
 
 #if previous_DF == True:
    # Auto_mearg(current_DF,previous_DF)
