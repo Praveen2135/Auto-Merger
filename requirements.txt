@@ -1,6 +1,7 @@
 gitdb==4.0.9
 GitPython==3.1.29
 numpy==1.23.4
+openpyxl==3.0.10
 packaging==21.3
 pandas==1.5.1
 Pillow==9.3.0
