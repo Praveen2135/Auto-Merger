@@ -33,13 +33,16 @@ def Auto_merge (df1,df2):
     # For loop to iterate
     for i in range (0,len(current_DF)):
         for j in range (0,len(previous_DF)):
-            # Stage 1 where it checks the name 
-            if current_DF['Unnamed: 0'][i] == previous_DF['Unnamed: 0'][j]:
-                print(current_DF['Unnamed: 0'][i])
-                print(previous_DF['Unnamed: 0'][j])
-                previous_DF.iat[i,len(previous_DF.columns)-1] = current_DF['Recent'][i]
-                print('----------------------------')
-                break
+            
+            # IF there is any dublication in the label it will skip the stage 1
+            if True not in (previous_DF['Unnamed: 0'].duplicated().tolist()):
+                # Stage 1 where it checks the name 
+                if current_DF['Unnamed: 0'][i] == previous_DF['Unnamed: 0'][j]:
+                    print(current_DF['Unnamed: 0'][i])
+                    print(previous_DF['Unnamed: 0'][j])
+                    previous_DF.iat[i,len(previous_DF.columns)-1] = current_DF['Recent'][i]
+                    print('----------------------------')
+                    break
 
             # Stage 2.1 if name was not same checks the back value and in back there are dublicate values   
             elif current_DF['Previous'][i] in duplicate:
