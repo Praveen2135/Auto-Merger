@@ -35,9 +35,33 @@ def Auto_merge (df1,df2):
         for j in range (0,len(previous_DF)):
             
             # IF there is any dublication in the label it will skip the stage 1
-            if True not in (previous_DF['Unnamed: 0'].duplicated().tolist()):
+            if current_DF['Unnamed: 0'][i] == previous_DF['Unnamed: 0'][j]:
                 # Stage 1 where it checks the name 
-                if current_DF['Unnamed: 0'][i] == previous_DF['Unnamed: 0'][j]:
+                if (current_DF['Unnamed: 0'][i]) in ((previous_DF[previous_DF['Unnamed: 0'].duplicated()])['Unnamed: 0'].tolist()):
+
+                    # Stage to come into action
+                    if current_DF['Previous'][i] in duplicate:
+                        print('Dublicate found ',current_DF['Unnamed: 0'][i])
+                        num=1
+                        while num <= (len(duplicate_particulars)):
+                            print(num, duplicate_particulars[num-1])
+                            num=num+1
+
+                        print('Select number to which you want to mearg :- ',current_DF['Unnamed: 0'][i])
+                        user_in = int(input())
+                        tabel_num=previous_DF['Unnamed: 0'].tolist().index(duplicate_particulars[user_in-1])
+                        previous_DF.iat[tabel_num,len(previous_DF.columns)-1] = current_DF['Recent'][i]
+
+                        break
+
+                    elif current_DF['Previous'][i] == previous_DF['previous'][j]:
+                        print(current_DF['Previous'][i])
+                        print(previous_DF['previous'][j])
+                        previous_DF.iat[i,len(previous_DF.columns)-1] = current_DF['Recent'][i]
+                        print('--------------------------')
+                        break
+                
+                elif current_DF['Unnamed: 0'][i] == previous_DF['Unnamed: 0'][j]:
                     print(current_DF['Unnamed: 0'][i])
                     print(previous_DF['Unnamed: 0'][j])
                     previous_DF.iat[i,len(previous_DF.columns)-1] = current_DF['Recent'][i]
